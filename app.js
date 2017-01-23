@@ -21,9 +21,10 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
-const NAME_ACTION = 'make_name';
-const COLOR_ARGUMENT = 'color';
-const NUMBER_ARGUMENT = 'number';
+// const NAME_ACTION = 'make_name';
+// const COLOR_ARGUMENT = 'color';
+// const NUMBER_ARGUMENT = 'number';
+let stories = ["The Grasshopper and the Ant. The Grasshopper having sung all the summer long, Found herself lacking food When the North Wind began its song. Not a single little piece Of fly or grub did she have to eat. She went complaining of hunger To the Ant's home, her neighbour, Begging there for a loan Of some grain to keep herself alive Til the next season did arrive, I shall pay you, she said Before next August, on my word as an animal. I'll pay both interest and pricipal. The Ant was not so inclined this not being one of her faults. What did you do all summer? Said she to the grasshopper. Night and day I sang, I hope that does not displease you. You sang? I will not look askance. But now my neighbour it's time to dance."]
 
 // [START SillyNameMaker]
 app.post('/', function (req, res) {
@@ -33,11 +34,10 @@ app.post('/', function (req, res) {
 
   // Make a silly name
   function makeName (assistant) {
-    let number = assistant.getArgument(NUMBER_ARGUMENT);
-    let color = assistant.getArgument(COLOR_ARGUMENT);
-    assistant.tell('Alright, your silly name is ' +
-      color + ' ' + number +
-      '! I hope you like it. See you next time.');
+    // let number = assistant.getArgument(NUMBER_ARGUMENT);
+    // let color = assistant.getArgument(COLOR_ARGUMENT);
+    let story = stories[Math.floor(Math.random()*stories.length];
+    assistant.tell(story);
   }
 
   let actionMap = new Map();
